@@ -1,0 +1,18 @@
+services:
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana-local
+    restart: unless-stopped
+    privileged: true
+    user: root
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    networks:
+      - grafana-network
+volumes:
+  grafana-storage:
+
+networks:
+  grafana-network:
